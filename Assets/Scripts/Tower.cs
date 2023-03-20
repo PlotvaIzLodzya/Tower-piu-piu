@@ -5,6 +5,7 @@ using UnityEngine;
 public class Tower : MonoBehaviour
 {
     [SerializeField] private Projectile _projectilePrefab;
+    [SerializeField] private TriggerZone _triggerZone;
 
     [field: SerializeField] private GUIDObject _gUIDObject = new GUIDObject();
 
@@ -12,12 +13,10 @@ public class Tower : MonoBehaviour
 
     private void Awake()
     {
-        _shootSystem = new ShootSystem(transform, _projectilePrefab, _gUIDObject.GUID);
-    }
-
-    private void Update()
-    {
-        //_shootSystem.Update();
+        EnemyContainer enemyContainer = new EnemyContainer();
+        _triggerZone.Init(enemyContainer);
+        _shootSystem = new ShootSystem(transform, _projectilePrefab, enemyContainer, _gUIDObject.GUID);
+        StartCoroutine(_shootSystem.Aiming());
     }
 
     [ContextMenu("Regenerate GUID")]

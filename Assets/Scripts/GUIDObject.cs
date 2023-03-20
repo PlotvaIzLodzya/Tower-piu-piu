@@ -3,7 +3,7 @@ using Unity.Collections;
 using UnityEngine;
 
 [Serializable]
-public class GUIDObject: MonoBehaviour
+public class GUIDObject
 {
     [ReadOnly, SerializeField] private string _guid;
 
