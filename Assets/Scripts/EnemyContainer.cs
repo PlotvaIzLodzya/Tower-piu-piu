@@ -17,7 +17,7 @@ public class EnemyContainer
         {
             float distance = Vector3.Distance(enemy.Transform.position, position);
 
-            if (distance < minDistance && enemy.Health.IsGonnaDie == false)
+            if (distance < minDistance && enemy.Health.IsGonnaDie == false && enemy.IsVisible)
             {
                 damagable = enemy;
                 minDistance = distance;

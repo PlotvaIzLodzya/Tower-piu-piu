@@ -7,6 +7,7 @@ public interface IDamagable
     public Health Health { get; }
     public Fraction Fraction { get; }
     public bool IsDead => Health.IsDead;
+    public bool IsVisible { get; }
 
     public event Action<IDamagable> Died;
 

@@ -9,11 +9,14 @@ public class Enemy : MonoBehaviour, IDamagable
     [SerializeField] private int _damage;
     [SerializeField] private float _speed;
 
+    [field:SerializeField] public EnemyView View { get; private set; }
+
     private Movement _movement = new Movement();
 
     public Transform Transform => transform;
     public Fraction Fraction { get; private set; } = Fraction.Enemy; 
     public Health Health { get; private set; } = new Health(3);
+    public bool IsVisible => View.IsVisible;
 
     private Reward Reward;
     public int RewardValue => Reward.Value;
@@ -41,6 +44,7 @@ public class Enemy : MonoBehaviour, IDamagable
 
     public void Init(Transform point, Reward reward)
     {
+        View.Init();
         Reward = reward;
         Reward.EnemyMultiplier = _enemyCostMultiplier;
         MoveTo(point, _speed);

@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _upgradeLevels:
   - <Cost>k__BackingField: 0
-    <Value>k__BackingField: 0.4
-  - <Cost>k__BackingField: 3
-    <Value>k__BackingField: 0.35
-  - <Cost>k__BackingField: 3
-    <Value>k__BackingField: 0.3
-  <Image>k__BackingField: {fileID: 0}
+    <Value>k__BackingField: 0.2
+  - <Cost>k__BackingField: 20
+    <Value>k__BackingField: 0.15
+  - <Cost>k__BackingField: 30
+    <Value>k__BackingField: 0.1
+  <Sprite>k__BackingField: {fileID: 21300000, guid: 187faee6048dafe438b6d36a94b8957f, type: 3}
+  <BackgroundColor>k__BackingField: {r: 0.3529412, g: 0.49803925, b: 0.75294125, a: 1}
   <Type>k__BackingField: 1

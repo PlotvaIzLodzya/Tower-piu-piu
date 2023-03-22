@@ -20,6 +20,7 @@ public class Tower : MonoBehaviour, IDamagable
     public UpgradeSystem Upgrades { get; private set; }
     public Transform Transform => transform;
     public string GUID => _gUIDObject.GUID;
+    public bool IsVisible { get; private set; } = true;
 
     public event Action<IDamagable> Died;
 
