@@ -12,12 +12,12 @@ public class Weapon : Upgradable
     {
         _projectile = projectile;
         _projectileContainer = pojectileContainer;
-        _projectileSpeed = 1f;
+        _projectileSpeed = 3f;
     }
 
-    public void Shoot(Vector3 direction)
+    public void Shoot(Vector3 direction, Fraction fraction)
     {
         var projectile = Object.Instantiate(_projectile, _projectileContainer);
-        projectile.Init(Damage, _projectileSpeed, direction);
+        projectile.Init(Damage, _projectileSpeed, direction, fraction);
     }
 }

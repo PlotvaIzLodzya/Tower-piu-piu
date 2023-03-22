@@ -6,14 +6,22 @@ public class Health
     public int MaxValue { get; private set; }
     public float DamageCounter { get; private set; }
     public bool IsGonnaDie => DamageCounter >= MaxValue;
-
-    public Health(int value)
-    {
-        Value = value;
-        MaxValue = value;
-    }
+    public bool IsDead { get; private set; }
 
     public event Action Died;
+
+    public Health(int maxHealth)
+    {
+        Value = maxHealth;
+        MaxValue = maxHealth;
+    }
+
+    public Health(int current, int max)
+    {
+        Value = current;
+        MaxValue = max;
+    }
+
     public void TakeDamage(int value)
     {
         Value -= value;
@@ -21,6 +29,7 @@ public class Health
         if(Value <=0)
         {
             Value = 0;
+            IsDead = true;
             Died?.Invoke();
         }
     }

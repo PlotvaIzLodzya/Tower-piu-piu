@@ -1,9 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyContainer
 {
-    private List<IDamagable> _enemys = new List<IDamagable>();
+    private List<Enemy> _enemys = new List<Enemy>();
+
+    public event Action<Enemy> EnemyDied;
 
     public bool TryGetClosestEnemy(Vector3 position, out IDamagable damagable)
     {
@@ -26,13 +29,15 @@ public class EnemyContainer
 
     public void Add(IDamagable enemy)
     {
-        _enemys.Add(enemy);
+        _enemys.Add(enemy as Enemy);
         enemy.Died += Remove;
     }
 
-    public void Remove(IDamagable enemy)
+    public void Remove(IDamagable damagable)
     {
-        enemy.Died -= Remove;
+        damagable.Died -= Remove;
+        Enemy enemy = damagable as Enemy;
         _enemys.Remove(enemy);
+        EnemyDied?.Invoke(enemy);
     }
 }

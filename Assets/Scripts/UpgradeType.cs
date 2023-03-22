@@ -3,4 +3,5 @@
     AttackRange,
     AttackSpeed,
     Damage,
+    Speed
 }
